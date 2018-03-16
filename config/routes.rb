@@ -4,7 +4,7 @@
 #  login GET  /login(.:format)                   login#index
 #        GET  /auth/:provider/callback(.:format) sessions#index
 #   root GET  /                                  login#index
-# 
+#
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   get 'login', to: 'login#index'
   ## Deal with session creating
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure'
+  get 'logout', to: 'sessions#destroy'
   root 'profile#index'
 end
