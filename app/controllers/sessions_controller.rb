@@ -1,6 +1,5 @@
 # Controls Login Call back
 class SessionsController < ApplicationController
-
   def create
     ## Call back from google that user is verified
     @user = User.find_from_omniauth(auth)
@@ -16,6 +15,11 @@ class SessionsController < ApplicationController
       )
       render json: { jwt: jwt }
     end
+  end
+
+  def destroy
+    reset_session
+    redirect_to root_path
   end
 
   private
