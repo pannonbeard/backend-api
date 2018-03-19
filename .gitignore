@@ -21,3 +21,4 @@
 
 ## includes database, secrets, cable
 /config/*.yml
+coverage
