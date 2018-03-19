@@ -6,7 +6,7 @@ class LoginController < ApplicationController
     if params[:email] && check_allowed(params[:email])
       redirect_to '/auth/google_oauth2'
     else
-      render json: { result: 'Invalid User' }, status: :not_acceptable
+      render json: { error: 'Invalid User' }
     end
   end
 

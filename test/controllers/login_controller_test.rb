@@ -21,6 +21,6 @@ class LoginControllerTest < ActionDispatch::IntegrationTest
       email: 'eampl3e@gmail.com'
     }
     ## Assert redirected to google auth page
-    assert_response :not_acceptable
+    assert_redirected_to 'http://www.example-porfolio.com/?error=invalid_user'
   end
 end
