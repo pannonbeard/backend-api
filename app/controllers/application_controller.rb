@@ -1,6 +1,6 @@
+# frozen_string_literal: true
 ## Main application controller
 class ApplicationController < ActionController::API
-
   rescue_from JWT::ExpiredSignature, :with => :record_not_found
 
   def logged_in?
