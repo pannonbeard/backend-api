@@ -1,6 +1,18 @@
+# frozen_string_literal: true
+
 # Handle redirect login
 class LoginController < ApplicationController
   def index
-    redirect_to '/auth/google_oauth2'
+    if params[:email] && check_allowed(params[:email])
+      redirect_to '/auth/google_oauth2'
+    else
+      render json: { result: 'Invalid User' }, status: :not_acceptable
+    end
+  end
+
+  private
+
+  def check_allowed(email)
+    email == Rails.application.secrets.allowed_user
   end
 end
