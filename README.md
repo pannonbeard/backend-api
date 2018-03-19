@@ -1,24 +1,15 @@
-# README
+# Backend for portfolio
+This is a work in progress for the google oauthenticated profile that will allow user to login from other source and retrieve portfolio information.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prereqs
+- ruby version 2.3.6 or beter
+- rails version 5.1.5
+- currently set to mysql database, but could be changed to favorite flavor
 
-Things you may want to cover:
+## Just an API
+This is just the backend api to authenticate and then be able to post portfolio updates to.
 
-* Ruby version
+## Advancements needed
+Finish what portfolio has as far as editable information is concerned
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
