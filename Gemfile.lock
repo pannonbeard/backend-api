@@ -98,6 +98,7 @@ GEM
       omniauth (~> 1.2)
     puma (3.11.3)
     rack (2.0.4)
+    rack-cors (1.0.1)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
@@ -160,6 +161,7 @@ DEPENDENCIES
   mysql2
   omniauth-google-oauth2 (= 0.5.3)
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.5)
   simplecov
   tzinfo-data
