@@ -15,8 +15,12 @@
 
 one:
   name: MyString
-  email: MyString
+  email: lemons@example.com
+  uid: '12345'
+  provider: test
 
 two:
   name: MyString
-  email: MyString
+  email: other@example.com
+  uid: '54231'
+  provider: test

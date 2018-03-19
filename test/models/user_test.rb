@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -13,8 +15,27 @@
 
 require 'test_helper'
 
+# testing the user
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'checking on auth' do
+    @auth = {
+      'provider' => 'test',
+      'uid' => '12345'
+    }
+    @user = User.find_from_omniauth(@auth)
+    assert users(:one).name == @user.name
+  end
+
+  test 'checking auth to create user' do
+    @auth = {
+      'provider' => 'test',
+      'uid' => '52369',
+      'info' => {
+        'name' => 'Test',
+        'email' => 'text@example.com'
+      }
+    }
+    @user = User.find_from_omniauth(@auth)
+    assert User.last.name == @user.name
+  end
 end
