@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to Rails.application.secrets.portfolio_redirect
   end
 
   private
