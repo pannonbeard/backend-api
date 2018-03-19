@@ -33,6 +33,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy session' do
     get '/logout'
-    assert_redirected_to root_path
+    assert_redirected_to 'http://www.example-porfolio.com'
   end
 end

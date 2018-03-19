@@ -8,6 +8,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
+    p request.cookies
     if auth_present?
       user = User.find(auth["user"])
       if user
@@ -35,6 +36,6 @@ class ApplicationController < ActionController::API
   end
 
   def record_not_found(error)
-    render json: { error: error.message }, status: :not_acceptable
+    redirect_to Rails.application.secrets.portfolio_redirect, status: :not_acceptable
   end
 end
