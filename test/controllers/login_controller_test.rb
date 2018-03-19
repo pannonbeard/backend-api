@@ -20,7 +20,7 @@ class LoginControllerTest < ActionDispatch::IntegrationTest
     get '/login', params: {
       email: 'eampl3e@gmail.com'
     }
-    ## Assert redirected to google auth page
-    assert_response :not_acceptable
+    ## Assert redirected to main profile page
+    assert_response :found
   end
 end

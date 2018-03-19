@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 
     ## create json web token to send back to front end
     jwt = Auth.issue(user: @user.id, exp: experation)
-    render json: { jwt: jwt }
+
+    redirect_to Rails.application.secrets.portfolio_redirect + '/?token=' + jwt
   end
 
   def destroy

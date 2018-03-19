@@ -28,7 +28,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     get '/auth/google_oauth2/callback'
     @request.env['omniauth.env'] = OmniAuth.config.mock_auth[:google_oauth2]
 
-    assert_response :ok
+    assert_response :found
   end
 
   test 'should destroy session' do
