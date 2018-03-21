@@ -23,7 +23,8 @@ class ApplicationController < ActionController::API
   private
 
   def token
-    request.env["HTTP_AUTHORIZATION"].scan(/Bearer (.*)$/).flatten.last
+    session[:jwt]
+    # request.env["HTTP_AUTHORIZATION"].scan(/Bearer (.*)$/).flatten.last
   end
 
   def auth
@@ -31,10 +32,11 @@ class ApplicationController < ActionController::API
   end
 
   def auth_present?
-    !!request.env.fetch("HTTP_AUTHORIZATION",  "").scan(/Bearer/).flatten.first
+    session[:jwt]
+    #!!request.env.fetch("HTTP_AUTHORIZATION",  "").scan(/Bearer/).flatten.first
   end
 
   def record_not_found(error)
-    redirect_to Rails.application.secrets.portfolio_redirect, status: :not_acceptable
+    render json: { error: error }, status: :not_acceptable
   end
 end
