@@ -8,12 +8,13 @@ class SessionsController < ApplicationController
 
     ## create json web token to send back to front end
     jwt = Auth.issue(user: @user.id, exp: experation)
-
-    redirect_to Rails.application.secrets.portfolio_redirect + '/?token=' + jwt
+    session[:jwt] = jwt
+    redirect_to Rails.application.secrets.portfolio_redirect
   end
 
   def destroy
     reset_session
+    redirect_to Rails.application.secrets.portfolio_redirect
   end
 
   private
@@ -23,6 +24,6 @@ class SessionsController < ApplicationController
   end
 
   def experation
-    12.hours.from_now.to_i
+    2.hours.from_now.to_i
   end
 end
