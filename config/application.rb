@@ -22,6 +22,7 @@ module BackendApi
     config.load_defaults 5.1
     config.autoload_paths << Rails.root.join('lib')
     config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Cookies::ChainedCookieJars
     config.middleware.use ActionDispatch::Session::CookieStore
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -29,13 +30,13 @@ module BackendApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        origins 'http://localhost:3000'
+        resource '*', :headers => :any, :methods => [:get, :post, :options], credentials: true
       end
     end
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    config.api_only = false
   end
 end
